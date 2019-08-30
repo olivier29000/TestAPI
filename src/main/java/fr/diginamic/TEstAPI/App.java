@@ -22,9 +22,7 @@ public class App {
 
 			List<StationDeMesure> listeDeStationsDeMesure = JsonManipulation.obtenirLesStationDeMesures(myResponse);
 			List<Mesure> listeDesMesures = JsonManipulation.obtenirLesMesures(myResponse);
-			
-			
-			
+
 			// for (StationDeMesure stationDeMesure : listeDeStationsDeMesure) {
 			//
 			// System.out.println(stationDeMesure.getId()
@@ -44,16 +42,14 @@ public class App {
 			List<Commune> listeDesCommunes = new ArrayList<Commune>();
 			listeDesCommunes = JsonManipulation.obtenirLesCommunes(myResponseCommunes);
 
-			listeDesCommunes=CommuneUtils.obtenirLesStationsDeMesuresLesPlusProches(listeDesCommunes, listeDeStationsDeMesure);
-				
-				for (Mesure mesure : listeDesMesures) {
-					System.out.println(mesure.getTypeDeDonnee() +" "+
-							mesure.getValeur() +" "+
-							mesure.getDate() +" "+
-							mesure.getIdStationDeMesure()
-				);
-				}
-				
+			listeDesCommunes = CommuneUtils.obtenirLesStationsDeMesuresLesPlusProches(listeDesCommunes,
+					listeDeStationsDeMesure);
+
+		  for (Mesure mesure : listeDesMesures) {
+				System.out.println(mesure.getTypeDeDonnee() + " " + mesure.getValeur() + " " + mesure.getDate() + " "
+						+ mesure.getIdStationDeMesure());
+			}
+
 			// System.out.println(myResponseCommunes.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
